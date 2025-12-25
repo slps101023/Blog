@@ -1,4 +1,3 @@
-<!-- To do : add the header template -->
 <%- include('partials/header.ejs') -%>
 
     <section class="hero">
@@ -9,39 +8,33 @@
     </section>
 
     <div class="container main-layout">
-        
+
         <main class="post-list">
-            <!-- To do: construct a database to store blog posts -->
-            <article class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1499750310159-52f0f8371f78?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="card-content">
-                    <span class="category">程式設計</span>
-                    <h2><a href="#">如何開始學習 HTML 與 CSS？</a></h2>
-                    <p class="excerpt">這是一篇給初學者的指南，帶你了解網頁開發的基礎知識，從零開始建立你的第一個網站...</p>
-                    <div class="meta">2023年 10月 25日</div>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="card-content">
-                    <span class="category">生活隨筆</span>
-                    <h2><a href="#">早晨的咖啡時光</a></h2>
-                    <p class="excerpt">每天早上一杯手沖咖啡，是我開啟一天工作的儀式感。今天想分享我最喜歡的咖啡豆...</p>
-                    <div class="meta">2023年 10月 20日</div>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="card-content">
-                    <span class="category">網頁設計</span>
-                    <h2><a href="#">CSS Grid 佈局教學</a></h2>
-                    <p class="excerpt">還在用 float 排版嗎？來試試看 CSS Grid 吧！它能讓你更輕鬆地設計複雜的網頁佈局...</p>
-                    <div class="meta">2023年 10月 15日</div>
-                </div>
-            </article>
-
+            <% posts.forEach(post=> { %>
+                <article class="card">
+                    <div class="card-image" style="background-image: url('<%= post.image %>');">
+                    </div>
+                    <div class="card-content">
+                        <span class="category">
+                            <%= post.category %>
+                        </span>
+                        <h2><a href="#">
+                                <%= post.title %>
+                            </a></h2>
+                        <form action="/delete/<%= post.id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="btn-delete" onclick="return confirm('確定要刪除這篇文章嗎？');">
+                                ❌
+                            </button>
+                        </form>
+                        <p class="excerpt">
+                            <%= post.excerpt %>
+                        </p>
+                        <div class="meta">
+                            <%= post.date %>
+                        </div>
+                    </div>
+                </article>
+                <% }); %>
         </main>
 
         <aside class="sidebar">
@@ -64,6 +57,5 @@
         </aside>
 
     </div>
-    <!-- To do change 2023 to current year -->
-    <!-- Add the footer template -->
-<%- include("partials/footer.ejs") %>
+
+    <%- include("partials/footer.ejs") %>

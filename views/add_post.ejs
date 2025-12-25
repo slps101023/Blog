@@ -5,20 +5,30 @@
             <h1>新增文章</h1>
             <p>請填寫以下表單以新增您的文章。</p>
             
-            <form class="contact-form">
+            <form class="contact-form" method="POST" action="/submit">
                 <div class="form-group">
                     <label for="title">文章標頭</label>
-                    <input type="text" id="title" placeholder="請輸入文章標頭">
+                    <input type="text" name="title" placeholder="請輸入文章標頭">
                 </div>
                 
                 <div class="form-group">
-                    <label for="subtitle">文章副標頭</label>
-                    <input type="text" id="subtitle" placeholder="請輸入文章副標頭">
+                    <label for="subtitle">文章摘要</label>
+                    <input type="text" name="subtitle" placeholder="請輸入文章副標頭">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">文章分類</label>
+                    <input type="text" name="category" placeholder="請輸入文章分類">
+                </div>
+
+                <div class="form-group">
+                    <label for="image">文章背景圖片</label>
+                    <input type="text" name="image" placeholder="請輸入文章背景圖片">
                 </div>
                 
                 <div class="form-group">
                     <label for="content">文章內容</label>
-                    <textarea id="content" rows="6" placeholder="請輸入您的文章內容..."></textarea>
+                    <textarea name="content" rows="6" placeholder="請輸入您的文章內容..."></textarea>
                 </div>
                 
                 <button type="submit" class="btn-submit">送出</button>
